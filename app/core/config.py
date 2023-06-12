@@ -7,12 +7,13 @@ ROOT_DIR = os.getcwd()
 _config = Config(os.path.join(ROOT_DIR, ".env"))
 APP_VERSION = "0.0.1"
 APP_NAME = "APP_name"
-API_PREFIX = "/api"
+API_PREFIX = ""
 
 # Env vars
 IS_DEBUG: bool = _config("IS_DEBUG", cast=bool, default=False)
 
 DB_URL: str = _config("DB_URL", cast=str, default="sqlite:///./sql_app.db")
+
 
 def get_celery_broker_url():
     """Generate the broker url from the environment."""

@@ -1,19 +1,19 @@
+import importlib
 from celery.utils.log import get_task_logger
 
-
-from app.services.setup_service import SetupService
 from .celery_app import celery_app
 
 celery_log = get_task_logger(__name__)
 
-setup_service = SetupService()
 
 
 @celery_app.task(
-    name='app.core.celery_worker.dummy_task',
-    queue="queue_name",
+    name='app.core.celery_worker.send_notification',
     )
-def update_tab_task():
-    pass
+def send_notification_task(message, channel_name, id_user):
+    service = importlib.import_module(f"app.services.{channel_name}_service")
+    channel = service.get_channel()
+    channel.send_notification(message, id_user)
+    celery_log.info(f"Sending message: {message}, using channel: {channel_name}, to user: ")
 
 

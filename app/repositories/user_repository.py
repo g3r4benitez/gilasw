@@ -1,5 +1,4 @@
 from sqlalchemy.exc import IntegrityError
-from fastapi import status
 from fastapi_sqlalchemy import db
 
 from app.models import user as models
@@ -25,5 +24,15 @@ def get(email: str):
     return db.session.query(orm.User).filter(orm.User.email == email).first()
 
 
-def get_user_using_apikey(apikey: str):
-    return db.session.query(orm.User).filter(orm.User.apikey == apikey).first()
+def getall():
+    return db.session.query(orm.User).all()
+
+
+def get_users_by_category(category_id):
+    # Here I have to return users related with categories
+    # todo: resolve filter by category_id
+    return db.session.query(orm.User).all()
+
+
+
+
