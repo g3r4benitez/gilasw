@@ -3,9 +3,9 @@ from app.repositories import user_repository
 
 
 def get_channel():
-    return SmsService()
+    return EmailService()
 
 
-class SmsService(BaseNotification):
-    name = 'Sms'
-    nick = "Sms message"
+class EmailService(BaseNotification):
+    name = 'Email'
+    nick = "Email message"

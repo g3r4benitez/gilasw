@@ -29,7 +29,7 @@ class User(Base):
     def __init__(self, name, email, phone_number, subscribed, channels):
         self.name = name
         self.email = email
-        self.phone_number = email
+        self.phone_number = phone_number
         self.subscribed = subscribed
         self.channels = channels
 

@@ -13,6 +13,7 @@ API_PREFIX = ""
 IS_DEBUG: bool = _config("IS_DEBUG", cast=bool, default=False)
 
 DB_URL: str = _config("DB_URL", cast=str, default="sqlite:///./sql_app.db")
+CHANNELS: str = "sms,email,push"
 
 
 def get_celery_broker_url():

@@ -1,8 +1,9 @@
+import importlib
+
 from fastapi import APIRouter
 from starlette import status
 
 from app.repositories import user_repository
-from app.core.celery_worker import send_notification_task
 
 
 router = APIRouter()
@@ -14,13 +15,25 @@ router = APIRouter()
     dependencies=[]
 )
 async def post_create(category_id: int, message: str):
-    # validate category and message
 
-    # send message to all users
     users = user_repository.get_users_by_category(category_id)
     for user in users:
         channels = user.channels.split(",")
-        for channel in channels:
-            send_notification_task.delay(message, channel, user.id)
+        for channel_name in channels:
+            channel_type = get_channel(channel_name)
+            service = importlib.import_module(f"app.services.{channel_type}_service")
+            channel = service.get_channel()
+            channel.register_notification(message, user)
     return None
+
+
+def get_channel(channel_name: str):
+    if channel_name == 'sms':
+        return 'sms'
+    if channel_name == 'email':
+        return 'email'
+    if channel_name == 'push':
+        return 'push'
+    return 'notification'
+
 

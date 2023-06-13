@@ -37,12 +37,11 @@ async def get_user(email: str):
     return user_repository.get(email)
 
 @router.patch(
-    "",
+    "/{user_email}",
     name="user_update",
     status_code=status.HTTP_200_OK,
     dependencies=[]
 )
-async def update_user(user: User):
-    user_db = user_repository.get(user.email)
-    user_db.channels = user.channels
-    user_db.save()
+async def update_user(user: User, user_email: str):
+    user_db = user_repository.update(user_email, user)
+    return user_db

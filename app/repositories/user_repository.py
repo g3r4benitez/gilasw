@@ -34,5 +34,14 @@ def get_users_by_category(category_id):
     return db.session.query(orm.User).all()
 
 
+def update(email: str, obj_user: models.User):
+    user = db.session.query(orm.User).filter(orm.User.email == email).first()
+    user.name = obj_user.name
+    user.phone_number = obj_user.phone_number
+    user.channels = obj_user.channels
+    db.session.commit()
+    return user
+
+
 
 
