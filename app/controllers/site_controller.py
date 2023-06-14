@@ -19,7 +19,7 @@ templates = Jinja2Templates(directory="static/templates")
 )
 def index(request: Request):
 
-    return templates.TemplateResponse("index.html",
+    return templates.TemplateResponse("documentation.html",
                                       {
                                           "request": request,
                                           "title": "GilaSW - Code Challenge - Gerardo Benitez",
@@ -33,7 +33,7 @@ def index(request: Request):
     status_code=status.HTTP_200_OK,
     response_class=HTMLResponse
 )
-def index(request: Request):
+def categories(request: Request):
 
     return templates.TemplateResponse("categories.html",
                                       {
@@ -49,7 +49,7 @@ def index(request: Request):
     status_code=status.HTTP_200_OK,
     response_class=HTMLResponse
 )
-def index(request: Request):
+def notifications(request: Request):
 
     return templates.TemplateResponse("notifications.html",
                                       {
@@ -66,7 +66,7 @@ def index(request: Request):
     status_code=status.HTTP_200_OK,
     response_class=HTMLResponse
 )
-def index(request: Request):
+def messages(request: Request):
 
     return templates.TemplateResponse("messages.html",
                                       {

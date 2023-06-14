@@ -1,48 +1,25 @@
-# Forward-Export-API
-An API to export some data from Forward like demographic, documents, income, utility, rent, etc.   
+# GilaSW - Code Challenge Gerardo Benitez
+This is a project created to resolve the code challenge. 
+The project have:
+a. One API created over Python using FastAPI
+b. A website created to show the API in action 
 
 ## Requirements
 
 Python 3.9+
 
-## Installation
-Install the required packages in your local environment (ideally virtualenv, conda, etc.).
-
-```sh
-pip install -r requirements.txt
-```
-
-## Setup
-1. Duplicate the `.env.example` file and rename it to `.env`
-2. Ask a teammate for the .env file
-
-## Postgres
-1. run this query: 
-CREATE EXTENSION IF NOT EXISTS tablefunc;
-
-
 ## Project
 
 ### Run It
 
-1. Start your app with:
+1. Start the project 
 
 ```sh
-python3 -m uvicorn app.main:app --reload --port 9009
+docker-compose up
 ```
 
-2. Go to [http://localhost:9009/docs](http://localhost:8000/docs).
+2. Go to [http://localhost:9009/index](http://localhost:9009/index).
 
-### Launch Rabbit locally
-```sh
-docker-compose up rabbit
-```
+## Architecture
 
-
-### Launch Rabbit Worker 
-Using with virtual environment activated
-```sh
-celery -A app.core.celery_worker worker --loglevel=info
-```
-
-
+![image info](./static/images/architecture.png)

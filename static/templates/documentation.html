@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block contenido %}
+<div class="conteiner">
+    <h3>What is it? </h3>
+    This is an project thinked to resolve the challenge proposed in <a href="{{ url_for('static', path='images/challenge.pdf') }}" target="_blank">challenge document</a>
+    <h3>Architecture</h3>
+    <img src="{{ url_for('static', path='images/architecture.png') }}" width="1100" >
+    <h3>Api Documentation - test api manually</h3>
+    Here you can see the api documentation and try it <a href="/docs" target="_blank">Api Documentation - Swagger</a>
+
+
+</div>
+
+</div>
+
+</div>
+{% endblock contenido %}
