@@ -11,3 +11,7 @@ def create(notification: models.Notification):
     return entity
 
 
+def getall():
+    return db.session.query(orm.Notification).order_by(orm.Notification.date_creation.desc()).all()
+
+

@@ -4,9 +4,21 @@ from fastapi import APIRouter
 from starlette import status
 
 from app.repositories import user_repository
+from app.repositories import notification_repository
 
 
 router = APIRouter()
+
+
+def get_channel(channel_name: str):
+    if channel_name == 'sms':
+        return 'sms'
+    if channel_name == 'email':
+        return 'email'
+    if channel_name == 'push':
+        return 'push'
+    return 'notification'
+
 
 
 @router.post(
@@ -15,7 +27,6 @@ router = APIRouter()
     dependencies=[]
 )
 async def post_create(category_id: int, message: str):
-
     users = user_repository.get_users_by_category(category_id)
     for user in users:
         channels = user.channels.split(",")
@@ -27,13 +38,13 @@ async def post_create(category_id: int, message: str):
     return None
 
 
-def get_channel(channel_name: str):
-    if channel_name == 'sms':
-        return 'sms'
-    if channel_name == 'email':
-        return 'email'
-    if channel_name == 'push':
-        return 'push'
-    return 'notification'
+@router.get(
+    "",
+    status_code=status.HTTP_200_OK,
+    dependencies=[]
+)
+async def get_all():
+    return notification_repository.getall()
+
 
 

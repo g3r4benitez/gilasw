@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block contenido %}
+<h2>Messages</h2>
+<div class="conteiner">
+    <table class="table">
+        <tr>
+            <th>date</th>
+            <th>message</th>
+            <th>channel</th>
+        </tr>
+        {% for notification in notifications %}
+        <tr>
+
+            <td>                {{ notification.date_creation }}             </td>
+            <td>                {{ notification.message }}             </td>
+            <td>                {{ notification.channel }}             </td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+
+
+</div>
+
+</div>
+{% endblock contenido %}

@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% block contenido %}
+<h2>Categories</h2>
+<div class="conteiner">
+    <table class="table">
+        <tr>
+        <th>Category Name</th><th>edit</th><th>delete</th>
+        </tr>
+         {% for category in categories %}
+        <tr>
+
+            <td>                {{ category.name }}             </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+
+
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <div class="row  text-left">
+
+    <h2>Create category</h2>
+        <form>
+            name: <input type="text" name="category_name" id="category_name">
+            <input type="button" value="create" class="btn btn-primary" id="create_category">
+        </form>
+
+    </div>
+
+</div>
+
+</div>
+{% endblock contenido %}

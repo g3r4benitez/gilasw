@@ -1,11 +1,11 @@
 import uvicorn
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.initializer import init
+from fastapi.staticfiles import StaticFiles
 
+from app.core.initializer import init
 from app.api.routes.router import api_router
-from app.core.config import (APP_NAME, APP_VERSION,
-                             IS_DEBUG)
+from app.core.config import (APP_NAME, APP_VERSION, IS_DEBUG)
 from app.core.error_handler import HTTPCustomException, exception_handler, fatal_exception_handler
 
 
@@ -25,6 +25,7 @@ def start_app() -> FastAPI:
     # Error handlers
     fast_app.add_exception_handler(HTTPCustomException, exception_handler)
     fast_app.add_exception_handler(status.HTTP_500_INTERNAL_SERVER_ERROR, fatal_exception_handler)
+    fast_app.mount("/static", StaticFiles(directory="static"), name="static")
     return fast_app
 
 

@@ -1,0 +1,29 @@
+<head>
+
+    <title>{{title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="{{ url_for('static', path='css/styles.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', path='js/jquery.min.js') }}"></script>
+</head>
+<body>
+<div class="row">
+    <div class="col-2"><a href="/index"><img src="{{ url_for('static', path='images/gila_icon.png') }}"></a></div>
+    <div class="col-10">
+        <h1 class="strong">{{encabezado}}</h1>
+        <h2>{{subtitle}}</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-2" style="background-color: aquamarine;">
+        {% include "parts/_navegacion.html"%}
+    </div>
+    <div class="col-10" id="container">
+        {% block contenido %}
+        CONTENIDO POR DEFECTO
+        {% endblock contenido %}
+    </div>
+</div>
+<script src="{{ url_for('static', path='js/functions.js') }}"></script>
+</body>

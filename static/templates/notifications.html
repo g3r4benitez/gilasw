@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% block contenido %}
+<div class="conteiner">
+
+    <h3>Select a Category and write the message to send</h3>
+    <form>
+        <div>
+            <div class="row">
+                <div class="col-2">Category:</div>
+                <div class="col-10"><select name="category_id" id="category_id">
+                    <option value="0">Select one...</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select></div>
+            </div>
+            <div class="row">
+                <div class="col-2">Message:</div>
+                <div class="col-10">
+                    <textarea name="message" id="message" ></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5"><input type="button" id="send_notification" value="Send " class="btn btn-primary"></div>
+                <div class="col-5">
+                </div>
+            </div>
+        </div>
+
+
+
+        <br>
+
+
+    </form>
+
+</div>
+
+</div>
+
+</div>
+{% endblock contenido %}
